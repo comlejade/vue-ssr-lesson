@@ -4,11 +4,11 @@
       2 items left
     </div>
     <div class="tab-btns" @click="toggleShow">
-      <button type="button" class="active">all</button>
-      <button type="button">active</button>
-      <button type="button">completed</button>
+      <span v-for="item in states" :key="item" :class="[filter === item ? 'active' : '']">
+        {{ item }}
+      </span>
     </div>
-    <div class="clear">
+    <div class="clear" @click="clearAllCompleted">
       clear completed
     </div>
   </div>
@@ -16,9 +16,23 @@
 
 <script>
 export default {
+  props: {
+    filter: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      states: ['all', 'active', 'completed']
+    }
+  },
   methods: {
     toggleShow(event) {
       
+    },
+    clearAllCompleted() {
+
     }
   },
 }
@@ -28,6 +42,7 @@ export default {
 <style lang="scss" scoped>
 .todo-tabs {
   margin-top: 20px;
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -39,16 +54,20 @@ export default {
   padding: 10px;
 }
 
+.clear {
+  cursor: pointer;
+}
+
 .tab-btns {
-  button {
+  display: flex;
+  span {
     padding: 10px;
+    display: block;
     font-size: 14px;
     color: #43494c;
     cursor: pointer;
     background-color: #fff;
     margin: 0 5px;
-    border: 0;
-    outline: none;
     &.active {
       border: 1px solid #b9b4b4;
       border-radius: 8px;

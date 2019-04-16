@@ -1,9 +1,9 @@
 <template>
   <div id="todo-container">
     <div class="todo-input">
-      <input type="text" autofocus placeholder="接下来做什么">
+      <input type="text" autofocus placeholder="接下来做什么" @keyup.enter="addItem">
     </div>
-    <TodoItem></TodoItem>
+    <TodoItem :todo="todo"></TodoItem>
     <TodoTabs></TodoTabs>
   </div>
 </template>
@@ -12,10 +12,24 @@
 import TodoItem from './TodoItem.vue'
 import TodoTabs from './Tabs.vue'
 export default {
+  data() {
+    return {
+      todo: {
+        id: 0,
+        content: 'todo content',
+        completed: false
+      }
+    }
+  },
   components: {
     TodoItem,
     TodoTabs
-  }
+  },
+  methods: {
+    addItem() {
+
+    }
+  },
 }
 </script>
 
@@ -24,7 +38,6 @@ export default {
   box-shadow: 0 0 1px 1px #eee;
   width: 600px;
   margin: 0 auto;
-  padding: 10px;
 }
 .todo-input {
   input {
@@ -33,7 +46,7 @@ export default {
     width: 100%;
     height: 50px;
     line-height: 30px;
-    padding: 10px;
+    padding: 10px 10px 10px 40px;
     font-size: 18px;
     border: 0;
     border-bottom: 1px solid #eee;

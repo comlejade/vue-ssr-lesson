@@ -3,8 +3,8 @@
     <div class="todo-input">
       <input type="text" autofocus placeholder="接下来做什么" @keyup.enter="addItem">
     </div>
-    <TodoItem :todo="todo"></TodoItem>
-    <TodoTabs></TodoTabs>
+    <TodoItem v-for="todo in todos" :todo="todo" :key="todo.id" @deleteTodo="del"></TodoItem>
+    <TodoTabs :filter="filter" :todos="todos" @toggle="toggleFilter"></TodoTabs>
   </div>
 </template>
 
@@ -14,11 +14,9 @@ import TodoTabs from './Tabs.vue'
 export default {
   data() {
     return {
-      todo: {
-        id: 0,
-        content: 'todo content',
-        completed: false
-      }
+      count: 0,
+      todos: [],
+      filter: 'all'
     }
   },
   components: {
@@ -26,8 +24,23 @@ export default {
     TodoTabs
   },
   methods: {
-    addItem() {
+    addItem(e) {
+      this.todos.unshift({
+        id: this.count++,
+        content: e.target.value.trim(),
+        completed: false
+      })
 
+      e.target.value = ''
+    },
+    del(id) {
+      const index = this.todos.findIndex(item => {
+        return item.id === id
+      })
+      this.todos.splice(index, 1)
+    },
+    toggleFilter(state){
+      this.filter = state
     }
   },
 }

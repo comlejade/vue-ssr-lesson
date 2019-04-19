@@ -1,16 +1,12 @@
 <template>
-  <div>
-    <ul class="todo-list">
-      <li :class="['todo-item', todo.completed ? 'completed' : '']">
-        <div class="todo-cnt">
-          <label>
-            <input type="checkbox" v-model="todo.completed">
-            <span>{{ todo.content }}</span>
-          </label>
-        </div>
-        <i class="todo-del" @click="deleteTodo"></i>
-      </li>
-    </ul>
+  <div :class="['todo-item', todo.completed ? 'completed' : '']">
+    <div class="todo-cnt">
+      <label>
+        <input type="checkbox" v-model="todo.completed">
+        <span>{{ todo.content }}</span>
+      </label>
+    </div>
+    <i class="todo-del" @click="deleteItem"></i>
   </div>
 </template>
 
@@ -28,15 +24,15 @@ export default {
     }
   },
   methods: {
-    deleteTodo(){}
+    deleteItem(){
+      this.$emit('deleteTodo', this.todo.id)
+    }
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.todo-list {
-  list-style-type: none;
-}
+
 .todo-item {
   display: flex;
   justify-content: space-between;
@@ -48,6 +44,12 @@ export default {
   padding-left: 30px;
   padding-right: 10px;
 
+  &:hover {
+    .todo-del {
+      display: block;
+    }
+  }
+
   .todo-cnt {
     display: flex;
     align-items: center;
@@ -57,7 +59,7 @@ export default {
       cursor: pointer;
       &:before {
         position: absolute;
-        left: -13px;
+        left: -18px;
         top: 50%;
         transform: translateY(-50%);
         content: '';
@@ -88,9 +90,9 @@ export default {
   }
 
   .todo-del {
-    width: 20px;
-    height: 20px;
-    display: block;
+    display: none;
+    width: 12px;
+    height: 12px;
     background: url('../assets/images/del.png') center center no-repeat;
     background-size: 100% 100%;
     cursor: pointer;

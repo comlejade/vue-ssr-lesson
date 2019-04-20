@@ -26,27 +26,26 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       states: ['all', 'active', 'completed']
     }
   },
   computed: {
     unFinishedLength () {
-      return  this.todos.filter(item => item.completed === false).length
+      return this.todos.filter(item => item.completed === false).length
     }
   },
   methods: {
-    toggleFilter(state) {
+    toggleFilter (state) {
       this.$emit('toggle', state)
     },
-    clearAllCompleted() {
+    clearAllCompleted () {
       this.$emit('clearAll')
     }
-  },
+  }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .todo-tabs {

@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <todo-header></todo-header>
-    <Todo></Todo>
-    <todo-footer></todo-footer>
+    <todo-header />
+    <Todo />
+    <todo-footer />
   </div>
 </template>
 
 <script>
-import Header from './todo/Header.vue'
-import Todo from './todo/Todo.vue'
-import Footer from './todo/Footer.vue'
+import Header from './layout/Header.vue'
+import Todo from './views/todo/Todo.vue'
+import Footer from './layout/Footer.vue'
 export default {
   components: {
     'todo-header': Header,
@@ -27,4 +27,3 @@ export default {
   align-items: center;
 }
 </style>
-

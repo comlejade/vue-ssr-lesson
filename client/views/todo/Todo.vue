@@ -12,7 +12,7 @@
 import TodoItem from './TodoItem.vue'
 import TodoTabs from './Tabs.vue'
 export default {
-  data() {
+  data () {
     return {
       count: 0,
       todos: [],
@@ -20,7 +20,7 @@ export default {
     }
   },
   computed: {
-    filterTodos() {
+    filterTodos () {
       if (this.filter === 'all') {
         return this.todos
       } else if (this.filter === 'active') {
@@ -35,7 +35,7 @@ export default {
     TodoTabs
   },
   methods: {
-    addItem(e) {
+    addItem (e) {
       this.todos.unshift({
         id: this.count++,
         content: e.target.value.trim(),
@@ -44,19 +44,19 @@ export default {
 
       e.target.value = ''
     },
-    del(id) {
+    del (id) {
       const index = this.todos.findIndex(item => {
         return item.id === id
       })
       this.todos.splice(index, 1)
     },
-    toggleFilter(state){
+    toggleFilter (state) {
       this.filter = state
     },
-    clearAllCompleted() {
+    clearAllCompleted () {
       this.todos = this.todos.filter(item => !item.completed)
     }
-  },
+  }
 }
 </script>
 

@@ -18,16 +18,16 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
-      
+
     }
   },
   methods: {
-    deleteItem(){
+    deleteItem () {
       this.$emit('deleteTodo', this.todo.id)
     }
-  },
+  }
 }
 </script>
 
@@ -53,7 +53,7 @@ export default {
   .todo-cnt {
     display: flex;
     align-items: center;
-    
+
     label {
       position: relative;
       cursor: pointer;
@@ -66,7 +66,7 @@ export default {
         display: block;
         width: 20px;
         height: 20px;
-        background: url('../assets/images/checkbox-non.png') center center no-repeat;
+        background: url('../../assets/images/checkbox-non.png') center center no-repeat;
         background-size: 100% 100%;
       }
     }
@@ -82,18 +82,18 @@ export default {
     .todo-cnt{
       label{
         &:before {
-          background-image: url('../assets/images/checkbox-checked.png');
+          background-image: url('../../assets/images/checkbox-checked.png');
         }
       }
     }
-    
+
   }
 
   .todo-del {
     display: none;
     width: 12px;
     height: 12px;
-    background: url('../assets/images/del.png') center center no-repeat;
+    background: url('../../assets/images/del.png') center center no-repeat;
     background-size: 100% 100%;
     cursor: pointer;
   }

@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const htmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const merge = require('webpack-merge')
@@ -10,7 +10,7 @@ let config
 
 const defaultPlugins = [
   new CleanWebpackPlugin(),
-  new htmlWebpackPlugin({
+  new HtmlWebpackPlugin({
     template: path.join(__dirname, '../practice/template.html'),
     filename: 'index.html'
   }),

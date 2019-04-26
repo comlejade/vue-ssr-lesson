@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <todo-header />
-    <Todo />
+    <!-- <router-link to="/app">app</router-link> -->
+    <router-link :to="{name: 'app'}">app</router-link>
+    <router-link to="/login">login</router-link>
+    <!-- <Todo /> -->
+    <router-view></router-view>
     <todo-footer />
   </div>
 </template>

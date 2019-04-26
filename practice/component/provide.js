@@ -2,8 +2,8 @@
 import Vue from 'vue'
 
 const childComponent = {
-  inject: ['grand', 'value'],
-  template: `<div>this is child template</div>`,
+  inject: ['grand', 'data'],
+  template: `<div>this is child template {{data.value}}</div>`,
   mounted () {
     console.log(this.grand, this.value)
   }
@@ -20,9 +20,15 @@ const component = {
 new Vue({
   name: 'grandF',
   provide () {
+    const data = {}
+
+    Object.defineProperty(data, 'value', {
+      get: () => this.value,
+      enumerable: true
+    })
     return {
       grand: this,
-      value: this.value
+      data
     }
   },
   el: '#root',
@@ -32,5 +38,10 @@ new Vue({
   data: {
     value: 1234
   },
-  template: `<comp></comp>`
+  template: `
+    <div>
+      <comp></comp>
+      <input type="text" v-model="value"/>
+    </div>
+  `
 })

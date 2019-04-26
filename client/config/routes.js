@@ -7,9 +7,23 @@ export default [
     redirect: '/app'
   },
   {
+    // path: '/app/:id',
     path: '/app',
+    // props: true,
+    // props: {
+    //   id: 456
+    // },
+    // props: (route) => ({ id: route.query.b }),
     component: Todo,
-    name: 'app'
+    // components: {
+    //   default: Todo,
+    //   a: Login
+    // },
+    name: 'app',
+    meta: {
+      title: 'this is app',
+      description: 'asdasd'
+    }
   },
   {
     path: '/login',

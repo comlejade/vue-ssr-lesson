@@ -1,0 +1,6 @@
+// import './binding'
+// import './directive'
+// import './component/extend'
+// import './component/v-model'
+// import './component/featrues'
+import './component/provide'

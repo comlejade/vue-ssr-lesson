@@ -13,7 +13,8 @@ router.beforeEach((to, from, next) => {
   console.log('beforeEach invoked')
   if (to.fullPath === '/app') {
     // next('/login')
-    next({ path: '/login' })
+    next('/login')
+    // next({ path: '/login' })
   } else {
     next()
   }

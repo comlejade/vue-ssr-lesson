@@ -1,23 +1,29 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 import App from './App.vue'
 
 import './assets/styles/global.scss'
 import createRouter from './config/router'
 
+import createStore from './store/store'
+
 Vue.use(VueRouter)
+Vue.use(Vuex)
 
 const router = createRouter()
+const store = createStore()
 
 router.beforeEach((to, from, next) => {
   console.log('beforeEach invoked')
-  if (to.fullPath === '/app') {
-    // next('/login')
-    next('/login')
-    // next({ path: '/login' })
-  } else {
-    next()
-  }
+  next()
+  // if (to.fullPath === '/app') {
+  //   // next('/login')
+  //   next()
+  //   // next({ path: '/login' })
+  // } else {
+  //   next()
+  // }
 })
 
 router.beforeResolve((to, from, next) => {
@@ -31,5 +37,6 @@ router.afterEach((to, from) => {
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#root')

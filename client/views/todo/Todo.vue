@@ -12,6 +12,21 @@
 import TodoItem from './TodoItem.vue'
 import TodoTabs from './Tabs.vue'
 export default {
+  beforeRouteEnter (to, from, next) {
+    console.log('todo before enter')
+    next(vm => {
+      console.log('after enter vm.id is', vm.id)
+    })
+  },
+  beforeRouteUpdate (to, from, next) {
+    // 使用params路由才会被触发，比如监听 /app/:id，监听id参数的改变
+    console.log('todo before update', 'to.params.id: ', to.params.id)
+    next()
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log('todo before leave')
+    next()
+  },
   data () {
     return {
       count: 0,
@@ -19,9 +34,9 @@ export default {
       filter: 'all'
     }
   },
-  // props: ['id'],
+  props: ['id'],
   mounted () {
-    // console.log(this.id)
+    console.log('todo mounted')
   },
   computed: {
     filterTodos () {

@@ -4,7 +4,7 @@
 export default [
   {
     path: '/',
-    redirect: '/app'
+    redirect: '/app/:id'
   },
   {
     // path: '/app',

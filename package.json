@@ -6,7 +6,8 @@
   "scripts": {
     "practice": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.practice.js",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.client.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "dev-client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js",
+    "dev-server": "cross-env NODE_ENV=development node server/server.js",
     "lint": "eslint --ext .js --ext .vue client/",
     "lint-fix": "eslint --fix --ext .js --ext .vue client/",
     "precommit": "npm run lint-fix"
@@ -54,6 +55,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "ejs": "^2.6.1",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "vue": "^2.6.10",

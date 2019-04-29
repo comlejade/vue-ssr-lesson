@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -22,7 +23,8 @@ const defaultPlugins = [
     'process.env': {
       NODE_ENV: isDev ? '"development"' : '"production"'
     }
-  })
+  }),
+  new VueClientPlugin()
 ]
 
 const devServer = {

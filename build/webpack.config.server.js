@@ -1,8 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
-// const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 // const CleanWebpackPlugin = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
@@ -21,20 +20,17 @@ config = merge(baseConfig, {
   },
   // 排除要打包的文件，直接从node_modules里面引用即可，防止引用两次
   externals: Object.keys(require('../package.json').dependencies),
-  resolve: {
-    alias: {
-      'vue': path.join(__dirname, '../node_modules/vue/dist/vue.esm.js')
-    }
-  },
+  // resolve: {
+  //   alias: {
+  //     'vue': path.join(__dirname, '../node_modules/vue/dist/vue.esm.js')
+  //   }
+  // },
   module: {
     rules: [
       {
         test: /\.scss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {}
-          },
+          'vue-style-loader',
           'css-loader',
           'postcss-loader',
           'sass-loader'
@@ -43,16 +39,12 @@ config = merge(baseConfig, {
     ]
   },
   plugins: [
-    // new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'styles.[contentHash:8].css'
-      // chunkFilename: '[id].css'
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"server"'
     }),
-    new VueServerPlugin()
+    new VueServerPlugin(),
+    new VueLoaderPlugin()
   ]
 })
 

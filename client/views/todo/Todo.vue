@@ -15,12 +15,12 @@ export default {
   beforeRouteEnter (to, from, next) {
     console.log('todo before enter')
     next(vm => {
-      console.log('after enter vm.id is', vm.id)
+      // console.log('after enter vm.id is', vm.id)
     })
   },
   beforeRouteUpdate (to, from, next) {
     // 使用params路由才会被触发，比如监听 /app/:id，监听id参数的改变
-    console.log('todo before update', 'to.params.id: ', to.params.id)
+    // console.log('todo before update', 'to.params.id: ', to.params.id)
     next()
   },
   beforeRouteLeave (to, from, next) {

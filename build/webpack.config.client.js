@@ -43,7 +43,7 @@ const devServer = {
 if (isDev) {
   config = merge(baseConfig, {
     mode: 'development',
-    devtool: 'cheap-module-eval-source-map',
+    devtool: '#cheap-module-eval-source-map',
     devServer,
     module: {
       rules: [

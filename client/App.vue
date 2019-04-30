@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <todo-header />
-    <p>{{ counter }}</p>
-    <p>{{ name }}</p>
+    <!-- <p>{{ counter }}</p>
+    <p>{{ name }}</p> -->
 
     <!-- <p>modulesA: {{ textA }}</p>
     <p>modulesB: {{ textB }} {{ textPlus }}</p>
     <p>modulesC: {{ textC }}</p> -->
-    <!-- <router-link to="/app">app</router-link> -->
-    <router-link to="/app/123">app123</router-link>
-    <router-link to="/app/456">app456</router-link>
+    <router-link to="/app">app</router-link>
+    <!-- <router-link to="/app/123">app123</router-link>
+    <router-link to="/app/456">app456</router-link> -->
     <!-- <router-link :to="{name: 'app'}">app</router-link> -->
     <router-link to="/login">login</router-link>
     <!-- <Todo /> -->
@@ -25,6 +25,9 @@ import Header from './layout/Header.vue'
 // import Todo from './views/todo/Todo.vue'
 import Footer from './layout/Footer.vue'
 export default {
+  metaInfo: {
+    title: 'vue ssr app'
+  },
   components: {
     'todo-header': Header,
     // Todo,

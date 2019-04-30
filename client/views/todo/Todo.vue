@@ -12,6 +12,9 @@
 import TodoItem from './TodoItem.vue'
 import TodoTabs from './Tabs.vue'
 export default {
+  metaInfo: {
+    title: 'todo page'
+  },
   beforeRouteEnter (to, from, next) {
     console.log('todo before enter')
     next(vm => {

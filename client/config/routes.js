@@ -9,7 +9,7 @@ export default [
   {
     path: '/app',
     // path: '/app/:id',
-    props: true,
+    // props: true,
     // props: {
     //   id: 456
     // },

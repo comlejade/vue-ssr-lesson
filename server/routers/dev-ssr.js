@@ -18,7 +18,7 @@ serverCompiler.watch({}, (err, stats) => {
   if (err) throw err
   stats = stats.toJson()
   stats.errors.forEach(err => console.log(err))
-  stats.warnings.forEach(warn => console.warn(warn))
+  stats.warnings.forEach(warn => console.warn(err))
 
   const bundlePath = path.join(
     serverConfig.output.path,
@@ -35,7 +35,7 @@ const handleSSR = async (ctx) => {
     return
   }
 
-  const clientManifestResp = axios.get('http://127.0.0.1:8000/public/vue-ssr-client-manifest.json')
+  const clientManifestResp = await axios.get('http://127.0.0.1:8000/public/vue-ssr-client-manifest.json')
 
   const clientManifest = clientManifestResp.data
 

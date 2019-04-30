@@ -73,11 +73,12 @@ if (isDev) {
   config = merge(baseConfig, {
     mode: 'production',
     entry: {
-      app: path.join(__dirname, '../client/main.js')
-      // vendor: ['vue', 'vue-router', 'vuex']
+      app: path.join(__dirname, '../client/client-entry.js'),
+      vendor: ['vue', 'vue-router', 'vuex']
     },
     output: {
-      filename: '[name].[chunkhash:8].js'
+      filename: '[name].[chunkhash:8].js',
+      publicPath: '/public/'
     },
     module: {
       rules: [

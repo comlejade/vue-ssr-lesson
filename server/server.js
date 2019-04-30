@@ -1,7 +1,6 @@
 const Koa = require('koa')
 const send = require('koa-send')
 const path = require('path')
-const pageRouter = require('./routers/dev-ssr')
 
 const app = new Koa()
 const isDev = process.env.NODE_ENV === 'development'
@@ -29,11 +28,18 @@ app.use(async (ctx, next) => {
   }
 })
 
+let pageRouter
+if (isDev) {
+  pageRouter = require('./routers/dev-ssr')
+} else {
+  pageRouter = require('./routers/ssr')
+}
+
 app.use(pageRouter.routes()).use(pageRouter.allowedMethods())
 
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || 3333
 
 app.listen(PORT, HOST, () => {
-  console.log(`server is listening on ${HOST} ${PORT}`)
+  console.log(`server is listening on ${HOST}:${PORT}`)
 })

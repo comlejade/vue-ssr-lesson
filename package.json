@@ -14,7 +14,7 @@
     "lint-fix": "eslint --fix --ext .js --ext .vue client/",
     "precommit": "npm run lint-fix",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
-    "clean": "rimraf dist && rimraf server-build",
+    "clean": "rimraf public && rimraf server-build",
     "start": "cross-env NODE_ENV=production node server/server.js"
   },
   "keywords": [],
